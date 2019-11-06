@@ -1,4 +1,4 @@
-# for Pre
+# For Pre
 The basic idea behind adversarial machine learning is that it extend machine learning from one player which has one cost function representing their interests.\
 
 instead, adversarial machine learning  dealing with more than one player with more than one cost function, on the left we show what the loss function looks like in a traditional machine learning algorithm, we have some kinds of cost function that takes player parameters and describes how well that player performs. \
@@ -10,4 +10,4 @@ we have machine learning model that wants to recognize spam and we have spammers
 we can model this at the language of game theory and draw a value function where we are looking for a point called Nash equilibrium that is simultaneously a minimum of the defending players cost and a maximum of the attackers attacking player cost. \
 So, this is for example a point where the spammers can not get anymore spam through the system unless they were somehow able to change the spam detector and the spam detector is not able to get anymore accuracy unless it was somehow or other able to change the spam generation algorithms used by the spammers.
 
-# for Pap
+# For Pap
