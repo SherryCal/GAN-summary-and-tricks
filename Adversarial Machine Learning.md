@@ -1,6 +1,5 @@
 # For Pre
 The basic idea behind adversarial machine learning is that it extend machine learning from one player which has one cost function representing their interests.\
-
 instead, adversarial machine learning  dealing with more than one player with more than one cost function, on the left we show what the loss function looks like in a traditional machine learning algorithm, we have some kinds of cost function that takes player parameters and describes how well that player performs. \
 Higher cost means the worse performance so that maybe something like the negative log likelihood assigned to the labels on a training data set.\
 For example, what is the negative log probability the model will assign the correct labels to all of the different images in an object recognition data set this is the way we train things like classifiers and many different kinds of generative models and even some kinds of reinforcement learning
