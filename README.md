@@ -1,5 +1,5 @@
 # related-work-summary-and-tricks
-## Classic Models
+## Classic neral network Models
 ### ResNet 
 (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/codings/ResNet.py)
 
@@ -9,6 +9,11 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 ### U-Net 
 (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/codings/U-Net-generator.py)
 
+## classic inpainting Network modles
+### Context-Encoder
+#### [Autoencoder] (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/autoencoder/AE.md)
+#### Local discriminator
 ## Structure Details
 ### Normalization
 great explaination in ZhiHu, (https://zhuanlan.zhihu.com/p/72589565)
+
