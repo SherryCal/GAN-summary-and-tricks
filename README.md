@@ -12,7 +12,7 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 ## classic inpainting Network modles
 ### Context-Encoder
 #### [Autoencoder](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/autoencoder/AE.md)
-#### Local discriminator
+#### [Local discriminator](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/Local%20discriminator(L-GAN).md)
 ## Structure Details
 ### Normalization
 great explaination in ZhiHu, (https://zhuanlan.zhihu.com/p/72589565)
