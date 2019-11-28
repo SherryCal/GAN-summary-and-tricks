@@ -18,6 +18,8 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 great explaination in ZhiHu, (https://zhuanlan.zhihu.com/p/72589565)
 
 ## Inpainting
-### [abstract or brief explaination](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/explain%20of%20inpainting.md)
+### abstract or brief explaination
+(https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/explain%20of%20inpainting.md)
 ### Advantages
-### [disadvantages](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/disadvantages%20of%20inpainting.md)
+### disadvantages
+(https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/disadvantages%20of%20inpainting.md)
