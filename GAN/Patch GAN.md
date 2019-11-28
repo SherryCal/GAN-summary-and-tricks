@@ -1,4 +1,6 @@
 Patch GAN的差别主要是在于Discriminator上，一般的GAN是只需要输出一个true or fasle 的矢量，这是代表对整张图像的评价；但是PatchGAN输出的是一个N x N的矩阵，这个N x N的矩阵的每一个元素，比如a(i,j) 只有True or False 这两个选择（label 是 N x N的矩阵，每一个元素是True 或者 False），这样的结果往往是通过卷积层来达到的，因为逐次叠加的卷积层最终输出的这个N x N 的矩阵，其中的每一个元素，实际上代表着原图中的一个比较大的感受野，也就是说对应着原图中的一个Patch，因此具有这样结构以及这样输出的GAN被称之为Patch GAN
+
+
 (By author of P2P GAN:
 
 Patch GAN is just a ConvNet, or you can say Patch GAN is a PatchNet, the power of ConvNet is that rather the regular GAN maps
@@ -8,7 +10,8 @@ Patch GAN is just a ConvNet, or you can say Patch GAN is a PatchNet, the power o
 )
 
 # Coding(Keras Model)
-def build_discriminator(self):
+
+    def build_discriminator(self):
 
         def d_layer(layer_input, filters, f_size=4, bn=True):
             """Discriminator layer"""
