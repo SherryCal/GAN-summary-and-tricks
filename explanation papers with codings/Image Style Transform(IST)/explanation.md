@@ -61,3 +61,34 @@ $$G_{i,j}^l=\sum_{k}F_{i,k}^lF_{j,k}^l$$
 107       gram = K.dot(features, K.transpose(features))
 108       return gram
 ```
+Another way, the content is different, the style is said to use the first convolution to calculate the loss function of each block, the author thinks this way get the texture Feature is more smooth, because just using the underlying Feature of the Map to get the image more detailed but more rough, and high-level image contain more information, the content of the lost some texture information. We use layers
+```
+160   feature_layers = ['block1_conv1', 'block2_conv1',
+162                     'block3_conv1', 'block4_conv1',
+163                     'block5_conv1']
+```
+The loss function combining the styles of all layers is
+$$L_{style}=\sum_{l}W_{l}E_{l}$$
+$E_{l}$ is the Mean square error of gram of $S^l$ and the gram of $F^l$
+```
+163   for layer_name in feature_layers:
+164       layer_features = outputs_dict[layer_name]
+165       style_reference_features = layer_features[1, :, :, :]
+166       combination_features = layer_features[2, :, :, :]
+167       sl = style_loss(style_reference_features, combination_features)
+168       loss += (style_weight / len(feature_layers)) * sl
+169   loss += total_variation_weight * total_variation_loss(combination_image)
+```
+the style_loss is 
+```
+117    def style_loss(style, combination):
+118        assert K.ndim(style) == 3
+119        assert K.ndim(combination) == 3
+120        S = gram_matrix(style)
+121        C = gram_matrix(combination)
+122        channels = 3
+123        size = img_nrows * img_ncols
+124        return K.sum(K.square(S - C)) / (4.0 * (channels ** 2) * (size ** 2))
+
+```
+use SGD for optimation
