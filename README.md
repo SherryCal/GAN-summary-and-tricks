@@ -20,7 +20,7 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 great explaination in ZhiHu, (https://zhuanlan.zhihu.com/p/72589565)
 Coding for [GN](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/codings/GN.py)
 ## Inpainting
-### abstract or brief explaination
+### abstract or brief explanation
 (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/explain%20of%20inpainting.md)
 ### Advantages
 ### disadvantages
