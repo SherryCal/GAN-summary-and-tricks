@@ -40,3 +40,24 @@ In this way, we can extract the Feature Map we want based on the keyword. Featur
                                       combination_features)
 
 ```
+content_weigh is the power of content loss , and the coding use 0.025. As for content loss
+```
+131   def content_loss(base, combination):
+132       return K.sum(K.square(combination - base))
+```
+With the definition of the loss function, we can calculate the gradient value of the loss function with respect to $F_{i,j}$ according to the value of the loss function, thus realizing the gradient update from back to front.
+## Style Presentation
+The two batches of the picture, the left and the middle.
+
+Different from the direct operation of content representation, style representation uses the form of Gram matrix expanded into 1-dimensional vectors by Feature Map. The reason for using Gram matrix is that considering that the texture feature has nothing to do with the specific position of the image, this feature can be guaranteed by scrambling the position information of the texture. The definition of Gram matrix is as follows.
+$$G_{i,j}^l=\sum_{k}F_{i,k}^lF_{j,k}^l$$
+```
+101   def gram_matrix(x):
+102       assert K.ndim(x) == 3
+103       if K.image_data_format() == 'channels_first':
+104           features = K.batch_flatten(x)
+105       else:
+106           features = K.batch_flatten(K.permute_dimensions(x, (2, 0, 1)))
+107       gram = K.dot(features, K.transpose(features))
+108       return gram
+```
