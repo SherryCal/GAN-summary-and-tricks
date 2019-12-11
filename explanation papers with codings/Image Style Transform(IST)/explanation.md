@@ -31,12 +31,12 @@ Get the model's dictionary
 93  outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
 
 ```
-In this way, we can extract the Feature Map we want based on the keyword. Feature Map [P^l]
+In this way, we can extract the Feature Map we want based on the keyword. Feature Map $P^l$ （base_image_features）and $F^l$(combination_features），then use this two Feature Maps to compute loss fuction
 ```
-layer_features = outputs_dict['block5_conv2']
-base_image_features = layer_features[0, :, :, :]
-combination_features = layer_features[2, :, :, :]
-loss += content_weight * content_loss(base_image_features,
+154   layer_features = outputs_dict['block5_conv2']
+155   base_image_features = layer_features[0, :, :, :]
+156   combination_features = layer_features[2, :, :, :]
+157   loss += content_weight * content_loss(base_image_features,
                                       combination_features)
 
 ```
