@@ -16,7 +16,7 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 ## Structure Details
 ### Normalization
 great explaination in ZhiHu, (https://zhuanlan.zhihu.com/p/72589565)
-
+Coding for GN
 ## Inpainting
 ### abstract or brief explaination
 (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/inpainting/explain%20of%20inpainting.md)
