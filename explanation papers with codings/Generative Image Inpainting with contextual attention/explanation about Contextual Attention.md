@@ -20,7 +20,7 @@ with backgrounds ones {$b_{x′,y′}$}, we measure with normalized inner produc
 Attention propagation We further encourage coherency
 of attention by propagation (fusion). The idea of coherency
 is that a shift in foreground patch is likely corresponding to
-an equal shift in background patch for attention. For example, $s^{∗}_{x,y,x′,y′}  $usually have close value with $s^{∗}_{x+1,y,x′+1,y′ }$.
+an equal shift in background patch for attention. For example, $s^{∗}_{x,y,x′,y′}$ usually have close value with $ s^{∗}_{x+1,y,x′+1,y′ }$.
 To model and encourage coherency of attention maps, we
 do a left-right propagation followed by a top-down propagation with kernel size of k.
 ### Memory efficiency
