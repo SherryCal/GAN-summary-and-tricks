@@ -9,7 +9,7 @@ great explaination (https://blog.csdn.net/Solo95/article/details/85177557)
 ### U-Net 
 (https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/codings/U-Net-generator.py)
 ### VGG19
-[Structure]()
+[Structure](https://blog.csdn.net/happyday_d/article/details/84112449)
 
 ## classic inpainting Network modles
 ### Context-Encoder
