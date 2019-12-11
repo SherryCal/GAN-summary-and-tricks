@@ -17,6 +17,6 @@ image, which captures its texture information but not the global arrangement
 ## algorithm Overview
 The principle of IST is based on the above mentioned characteristics that different layers of the network will respond to different types of features. Given a trained network, the source code used is VGG19
 ```
-88 model = vgg19.VGG19(input_tensor=input_tensor,
-89                   weights='imagenet', include_top=False)
+88   model = vgg19.VGG19(input_tensor=input_tensor,
+89                     weights='imagenet', include_top=False)
 ```
