@@ -29,5 +29,25 @@ Attention propagation We further encourage coherency of attention by propagation
 The propagation is efficiently implemented as convolution
 with identity matrix as kernels. Attention propagation significantly improves inpainting results in testing and enriches
 gradients in training
+```
+57    for xi, wi, raw_wi in zip(f_groups, w_groups, raw_w_groups):
+58            # conv for compare
+59            wi = wi[0]
+60            wi_normed = wi / tf.maximum(tf.sqrt(tf.reduce_sum(tf.square(wi), axis=[0,1,2])), 1e-4)
+61            yi = tf.nn.conv2d(xi, wi_normed, strides=[1,1,1,1], padding="SAME")
+62
+63            # conv implementation for fuse scores to encourage large patches
+64            if fuse:
+65                yi = tf.reshape(yi, [1, fs[1]*fs[2], bs[1]*bs[2], 1])
+66                yi = tf.nn.conv2d(yi, fuse_weight, strides=[1,1,1,1], padding='SAME')
+67                yi = tf.reshape(yi, [1, fs[1], fs[2], bs[1], bs[2]])
+68                yi = tf.transpose(yi, [0, 2, 1, 4, 3])
+69                yi = tf.reshape(yi, [1, fs[1]*fs[2], bs[1]*bs[2], 1])
+70                yi = tf.nn.conv2d(yi, fuse_weight, strides=[1,1,1,1], padding='SAME')
+71                yi = tf.reshape(yi, [1, fs[2], fs[1], bs[2], bs[1]])
+72                yi = tf.transpose(yi, [0, 2, 1, 4, 3])
+73            yi = tf.reshape(yi, [1, fs[1], fs[2], bs[1]*bs[2]])
+
+```
 ### Memory efficiency
 Assuming that a 64 × 64 region is missing in a 128 × 128 feature map, then the number of convolutional filters extracted from backgrounds is 12,288. This may cause memory overhead for GPUs. To overcome this issue, we introduce two options: 1) extracting background patches with strides to reduce the number of filters and 2) downscaling resolution of foreground inputs before convolution and upscaling attention map after propagation
