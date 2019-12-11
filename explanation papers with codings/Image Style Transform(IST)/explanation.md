@@ -20,3 +20,23 @@ explained in the right of the picture
 
 A layer with $N_l$ distinct filters has $N_l$ feature maps each of size $M_l$, where $M_l$ is the height times the width of the feature map. So the responses in a layer l can be stored in a matrix $F^l \in R^{N_l×M_l}$ where $F^l_{i,j}$ is the activation of the $i^{th}$ filter at position $j$ in layer $l$.Let $\vec{p}$ and $\vec{x}$ be the original image and the image that is generated, and $P_l$ and $F_l$ their respective feature representation in layer $l$. We then define the squared-error loss between the two feature representations
 $$L_{content(\vec{p},\vec{x},l)}=\frac{1}{2}\sum_{ij}{(F_{i,j}^l-P_{i,j}^l})^2$$
+Input_tensor
+```
+82   input_tensor = K.concatenate([base_image,
+83                              style_reference_image,
+84                              combination_image], axis=0)
+```
+Get the model's dictionary
+```
+93  outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
+
+```
+In this way, we can extract the Feature Map we want based on the keyword. Feature Map [P^l]
+```
+layer_features = outputs_dict['block5_conv2']
+base_image_features = layer_features[0, :, :, :]
+combination_features = layer_features[2, :, :, :]
+loss += content_weight * content_loss(base_image_features,
+                                      combination_features)
+
+```
