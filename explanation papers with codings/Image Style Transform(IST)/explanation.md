@@ -19,4 +19,4 @@ update the image $\vec{x}$ until it simultaneously matches the style features of
 explained in the right of the picture
 
 A layer with $N_l$ distinct filters has $N_l$ feature maps each of size $M_l$, where $M_l$ is the height times the width of the feature map. So the responses in a layer l can be stored in a matrix $F^l \in R^{N_l×M_l}$ where $F^l_{i,j}$ is the activation of the $i^{th}$ filter at position $j$ in layer $l$.Let $\vec{p}$ and $\vec{x}$ be the original image and the image that is generated, and $P_l$ and $F_l$ their respective feature representation in layer $l$. We then define the squared-error loss between the two feature representations
-![Alt text](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/explanation%20papers%20with%20codings/Image%20Style%20Transform(IST)/equations/1.png)
+L_{content(\vec{p},\vec{x},l)=\frac{1}{2}\sum_{ij}{(F_{i,j}^l-P_{i,j}^l}})^2
