@@ -14,7 +14,14 @@ Illustration of the contextual attention layer.
 3.we reconstruct foreground patches with background patches by performing deconvolution on attention score. The contextual attention layer is differentiable and fully-convolutional.
 ### Match and attend
 We consider the problem where we want to match features of missing pixels (foreground) to surroundings (background).we first
-extract patches (3 × 3) in background and reshape them as convolutional filters. To match foreground patches {$f_{x,y}$}
+extract patches (3 × 3) in background and reshape them as convolutional filters.
+```
+24    raw_w = tf.extract_image_patches(
+25            b, [1,kernel,kernel,1], [1,rate*stride,rate*stride,1], [1,1,1,1], padding='SAME')
+26        raw_w = tf.reshape(raw_w, [raw_int_bs[0], -1, kernel, kernel, raw_int_bs[3]])
+27        raw_w = tf.transpose(raw_w, [0, 2, 3, 4, 1])  # transpose to b*k*k*c*hw
+```
+To match foreground patches {$f_{x,y}$}
 with backgrounds ones {$b_{x′,y′}$}, we measure with normalized inner product (cosine similarity)
 ### Attention propagation
 Attention propagation We further encourage coherency of attention by propagation (fusion). The idea of coherency is that a shift in foreground patch is likely corresponding to an equal shift in background patch for attention. To model and encourage coherency of attention maps, we do a left-right propagation followed by a top-down propagation with kernel size of k.
