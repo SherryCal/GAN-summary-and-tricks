@@ -23,6 +23,20 @@ extract patches (3 × 3) in background and reshape them as convolutional filters
 ```
 To match foreground patches {$f_{x,y}$}
 with backgrounds ones {$b_{x′,y′}$}, we measure with normalized inner product (cosine similarity)
+```
+76    yi *=  mm  # mask
+77            yi = tf.nn.softmax(yi*scale, 3)
+78            yi *=  mm  # mask
+79
+80            offset = tf.argmax(yi, axis=3, output_type=tf.int32)
+81            offset = tf.stack([offset // fs[2], offset % fs[2]], axis=-1)
+82            # deconv for patch pasting
+83            # 3.1 paste center
+84            wi_center = raw_wi[0]
+85            yi = tf.nn.conv2d_transpose(yi, wi_center, tf.concat([[1], raw_fs[1:]], axis=0), strides=[1,rate,rate,1]) / 4.
+86            y.append(yi)
+87            offsets.append(offset)
+```
 ### Attention propagation
 Attention propagation We further encourage coherency of attention by propagation (fusion). The idea of coherency is that a shift in foreground patch is likely corresponding to an equal shift in background patch for attention. To model and encourage coherency of attention maps, we do a left-right propagation followed by a top-down propagation with kernel size of k.
 
