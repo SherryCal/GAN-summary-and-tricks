@@ -95,3 +95,16 @@ use SGD for optimation
 ## Style migration
 Loss fuction 
 $$L_{total}((\vec{p},\vec{a},\vec{x}))=\alpha L_{content}(\vec{p},\vec{x})+\beta L_{style}(\vec{a},\vec{x})$$
+Update the gradient with l-bfgs
+```
+233     x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(),
+234                                         fprime=evaluator.grads, maxfun=20)
+```
+```
+210    def loss(self, x):
+211            assert self.loss_value is None
+212            loss_value, grad_values = eval_loss_and_grads(x)
+213            self.loss_value = loss_value
+214            self.grad_values = grad_values
+215            return self.loss_value
+```
