@@ -20,7 +20,7 @@ The principle of IST is based on the above mentioned characteristics that differ
 88   model = vgg19.VGG19(input_tensor=input_tensor,
 89                     weights='imagenet', include_top=False)
 ```
-Style transfer algorithm. First content and style features are extracted and stored. The style image ~a is passed through the network
+Style transfer algorithm. First content and style features are extracted and stored. The style image $\stackrel{\rightarrow}{a}$ is passed through the network
 and its style representation Al on all layers included are computed and stored (left). The content image ~p is passed through the network
 and the content representation Pl in one layer is stored (right). Then a random white noise image ~x is passed through the network and its
 style features Gl and content features Fl are computed. On each layer included in the style representation, the element-wise mean squared
