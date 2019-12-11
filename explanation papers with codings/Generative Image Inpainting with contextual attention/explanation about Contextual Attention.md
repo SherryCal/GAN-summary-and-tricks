@@ -7,12 +7,15 @@ The contextual attention layer learns where to borrow or copy feature informatio
 ### steps 
 Illustration of the contextual attention layer.
 
-1.  we use convolution to compute matching score of foreground patches with background patches (as convolutional filters). 
+1.we use convolution to compute matching score of foreground patches with background patches (as convolutional filters). 
 
 2.we apply softmax to compare and get attention score for each pixel. 
 
 3.we reconstruct foreground patches with background patches by performing deconvolution on attention score. The contextual attention layer is differentiable and fully-convolutional.
 ### Match and attend
+We consider the problem where we want to match features of missing pixels (foreground) to surroundings (background).we first
+extract patches (3 × 3) in background and reshape them as convolutional filters. To match foreground patches {$f_{x,y}$}
+with backgrounds ones {$b_{x′,y′}$}, we measure with normalized inner product (cosine similarity)
 ### Attention propagation
 ### Memory efficiency
 Assuming that a 64 × 64 region is missing in a 128 × 128 feature map, then the number of convolutional filters extracted from backgrounds is 12,288. This may cause memory overhead for GPUs. To overcome this issue, we introduce two options: 1) extracting background patches with strides to reduce the number of filters and 2) downscaling resolution of foreground inputs before convolution and upscaling attention map after propagation
