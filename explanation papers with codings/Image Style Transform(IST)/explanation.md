@@ -92,3 +92,6 @@ the style_loss is
 
 ```
 use SGD for optimation
+## Style migration
+Loss fuction 
+$$L_{total}((\vec{p},\vec{a},\vec{x}))=\alpha L_{content}(\vec{p},\vec{x})+\beta L_{style}(\vec{a},\vec{x})$$
