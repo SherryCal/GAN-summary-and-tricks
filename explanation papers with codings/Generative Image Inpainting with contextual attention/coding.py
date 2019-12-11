@@ -1,11 +1,8 @@
 def contextual_attention(f, b, mask=None, ksize=3, stride=1, rate=1,
                          fuse_k=3, softmax_scale=10., training=True, fuse=True):
-    """ Contextual attention layer implementation.
-    Contextual attention is first introduced in publication:
-        Generative Image Inpainting with Contextual Attention, Yu et al.
-    Args:
-        x: Input feature to match (foreground).
-        t: Input feature for match (background).
+   """
+        f: Input feature to match (foreground).
+        b: Input feature for match (background).
         mask: Input mask for t, indicating patches not available.
         ksize: Kernel size for contextual attention.
         stride: Stride for extracting patches from t.
