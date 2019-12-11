@@ -20,3 +20,13 @@ The principle of IST is based on the above mentioned characteristics that differ
 88   model = vgg19.VGG19(input_tensor=input_tensor,
 89                     weights='imagenet', include_top=False)
 ```
+Style transfer algorithm. First content and style features are extracted and stored. The style image ~a is passed through the network
+and its style representation Al on all layers included are computed and stored (left). The content image ~p is passed through the network
+and the content representation Pl in one layer is stored (right). Then a random white noise image ~x is passed through the network and its
+style features Gl and content features Fl are computed. On each layer included in the style representation, the element-wise mean squared
+difference between Gl and Al is computed to give the style loss Lstyle (left). Also the mean squared difference between Fl and Pl is
+computed to give the content loss Lcontent (right). The total loss Ltotal is then a linear combination between the content and the style loss.
+Its derivative with respect to the pixel values can be computed using error back-propagation (middle). This gradient is used to iteratively
+update the image ~x until it simultaneously matches the style features of the style image ~a and the content features of the content image ~p
+(middle, bottom).
+![Alt text](https://github.com/SherryCal/related-work-summary-and-tricks/blob/master/explanation%20papers%20with%20codings/Image%20Style%20Transform(IST)/%20flowchart.png)
