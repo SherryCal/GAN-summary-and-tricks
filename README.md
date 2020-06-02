@@ -1,4 +1,4 @@
-http://dalao-diginnos-pc:8889/login?next=%2Ftree%3F
+http://dalao-Diginnos-PC:8889/
 # related-work-summary-and-tricks
 ## Classic neural network Models
 ### ResNet 
